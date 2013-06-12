@@ -1,0 +1,14 @@
+Money
+
+application that allows the user to store and retrieve information about their
+accounts payable and receivable. 
+
+Options:
+*with no options, Money returns a list of names/dates/amounts to whom money is
+ owed on a monthly basis; or for whom a current amount owed exists. 
+*with the add option, a new account is created if it does not exist, else the
+ current data is archived and the new data is made current
+*with the remove option, the account is archived and removed from the current
+ system. 
+
+
