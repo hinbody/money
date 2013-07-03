@@ -1,13 +1,28 @@
 class Account
   attr_accessor :name, :account_number, :current_due, :due_date,
     :last_payment_date, :last_payment_amount
-  def initialize name, number, due, date, last_pmt_date, last_pmt_due
+  def initialize name, number
     @name = name
     @account_number = number
-    @current_due = due
-    @due_date = date
-    @last_payment_date = last_pmt_date
-    @last_payment_amount = last_pmt_due
+  end
+
+  def self.list
+    @list ||= []
+    @list
+  end
+
+
+  def self.create name, account_number
+    a = Account.new(name, account_number)
+    a.persist!
+  end
+
+  def self.find_by_name name
+    list.first
+  end
+
+  def persist!
+    self.class.list << self
   end
 
   def update_name new_name
