@@ -1,3 +1,5 @@
+require 'sqlite3'
+
 class Account
   attr_accessor :name, :account_number, :current_due, :due_date,
     :last_payment_date, :last_payment_amount
