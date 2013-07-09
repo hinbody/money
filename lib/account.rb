@@ -22,7 +22,18 @@ class Account
   end
 
   def persist!
-    self.class.list << self
+    #self.class.list << self
+    db = SQLite3::Database.open "money.db"
+    db.execute "CREATE TABLE IF NOT EXISTS Accounts(name, account_number, recurring)"
+    db.execute "INSERT INTO Accounts Values(#{a.name}, #{a.account_number}, #{a.recurring})"
+
+  rescue SQLite3::Exception => e
+
+    puts "Exception occured"
+    puts e
+
+  ensure
+    db.close if db
   end
 
   def update_name new_name
