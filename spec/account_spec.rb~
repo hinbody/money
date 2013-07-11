@@ -20,7 +20,7 @@ describe Account do
 
     it "can get the first bill" do
       account.add_bill("2013-07-01", 29.52)
-      account.bills.first.should be_a Bill
+      account.bills.first.should == ["2013-07-01", 29.52]
     end
   end
 end
