@@ -16,9 +16,9 @@ describe Account do
     Account.create("ComCast", "2003003949")
     r_a = Account.find_recurring
     r_a.should_not be_nil
-#    r_a.name.should == 'Att'
-#    r_a.account_number.should == '234567'
-#    r_a.name.should_not == 'ComCast'
+    r_a.name.should == 'Att'
+    r_a.account_number.should == '234567'
+    r_a.name.should_not == 'ComCast'
   end
 
   context "bills" do
