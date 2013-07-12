@@ -10,7 +10,7 @@ class Account
     @bills = []
   end
 
-  def self.create name, account_number
+  def self.create name, account_number, recurring=false
     a = Account.new(name, account_number)
     a.persist!
     a
@@ -22,6 +22,11 @@ class Account
     end
   end
 
+  def self.find_recurring
+    db.execute("select * from Accounts where recurring=1") do |row|
+      return Account.new(row[0], row[1], row[2])
+    end
+  end
 
   def add_bill due_date, amount
     @bills << Bill.new(due_date, amount)

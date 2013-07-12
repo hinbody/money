@@ -11,6 +11,16 @@ describe Account do
     a.account_number.should == '2003003949'
   end
 
+  it "can find all recurring bills" do
+    Account.create("Att", "234567", true)
+    Account.create("ComCast", "2003003949")
+    r_a = Account.find_recurring
+    r_a.should_not be_nil
+#    r_a.name.should == 'Att'
+#    r_a.account_number.should == '234567'
+#    r_a.name.should_not == 'ComCast'
+  end
+
   context "bills" do
     it "has many bills" do
       account.bills.should be_empty 
