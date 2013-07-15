@@ -25,6 +25,8 @@ class Account
 
   def add_bill due_date, amount
     @bills << Bill.new(due_date, amount)
+    @bills[0].persist!
+    @bills
   end
 
   def persist!
