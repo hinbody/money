@@ -17,15 +17,14 @@ class Account
   end
 
   def self.find_by_name name
-    db.execute("select * from Accounts") do |row|
-      return Account.new(row[0], row[1], row[2].to_i > 0)
-    end
+    rows = db.execute("select * from Accounts where name='#{name}'")
+    return rows[0].name
   end
 
 
   def add_bill due_date, amount
     @bills << Bill.new(due_date, amount)
-    @bills.persist!
+    @bills[0].persist!
     @bills
   end
 

@@ -17,7 +17,7 @@ class Account
   end
 
   def self.find_by_name name
-    db.execute("select * from Accounts") do |row|
+    db.execute("select * from Accounts where name='#{name}'") do |row|
       return Account.new(row[0], row[1], row[2].to_i > 0)
     end
   end
