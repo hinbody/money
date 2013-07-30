@@ -23,8 +23,8 @@ module Money
     end
 
 
-    def add_bill due_date, amount
-      @bills << Bill.new(due_date, amount)
+    def add_bill due_date, amount, account_id
+      @bills << Bill.new(due_date, amount, account_id)
       @bills[0].persist!
       @bills
     end
@@ -33,7 +33,7 @@ module Money
       # TODO - Extract into "migration" ??
       db.execute "CREATE TABLE IF NOT EXISTS Accounts(id INTEGER PRIMARY KEY, 
     name, account_number, recurring)"
-    db.execute "INSERT INTO Accounts Values(NULL, ?, ?, ?)", @name, @account_number, @recurring ? 1 : 0
+      db.execute "INSERT INTO Accounts Values(NULL, ?, ?, ?)", @name, @account_number, @recurring ? 1 : 0
     rescue SQLite3::Exception => e
       puts "Exception occured"
       puts e

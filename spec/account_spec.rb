@@ -17,12 +17,12 @@ module Money
     context "bills" do
       it "has many bills" do
         account.bills.should be_empty 
-        account.add_bill('2013-07-01', 29.52)
+        account.add_bill('2013-07-01', 29.52, account.id)
         account.bills.should_not be_empty
       end
 
       it "can get the first bill" do
-        account.add_bill("2013-07-01", 29.52)
+        account.add_bill("2013-07-01", 29.52, account.id)
         account.bills.first.should be_a Bill
       end
     end
