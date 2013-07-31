@@ -28,3 +28,7 @@ Classes:
   :phone_number 
   :website_url 
   :fixed => bool
+
+To Do:
+  -No 2 accounts should have the same name
+  -No 2 account should have 2 bills with same due date
