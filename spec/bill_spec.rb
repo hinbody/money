@@ -6,5 +6,7 @@ module Money
     it "can be created" do
       b.should be_a Bill
     end
+    it "can get total of all bills" do
+    end
   end
 end

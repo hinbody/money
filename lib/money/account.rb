@@ -2,7 +2,8 @@ module Money
   class Account
     attr_accessor :id, :name, :account_number, :recurring, :bills
 
-    def initialize(name, number, recurring=false)
+    def initialize(name, number, id=0, recurring=false)
+      @id = id
       @name = name
       @account_number = number
       @recurring = recurring
@@ -18,7 +19,7 @@ module Money
 
     def self.find_by_name(name)
       db.execute("select * from Accounts where name='#{name}'") do |row|
-        return Account.new(row[1], row[2], row[3].to_i > 0)
+        return Account.new(row[1], row[2], row[0], row[3].to_i > 0)
       end
     end
 
