@@ -27,6 +27,8 @@ module Money
       end
 
       it "has many bills" do
+        #need code here? spec above and below both add a bill to the same
+        #account. Proves an account can have many bills?
       end
 
       it "can get the first bill" do

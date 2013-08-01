@@ -23,7 +23,6 @@ module Money
       end
     end
 
-
     def add_bill(due_date, amount, account_id)
       @bills << Bill.new(due_date, amount, account_id)
       @bills[0].persist!
