@@ -18,7 +18,6 @@ module Money
     def self.create(name, account_number, website = '', email = '', phone = '',
                     id=0, recurring=false)
     a = Account.new(name, account_number, website, email, phone, id, recurring)
-    binding.pry
     a.persist!
     a.id = db.execute("select last_insert_rowid()")
     a
@@ -44,6 +43,7 @@ module Money
 
     def add_bill(due_date, amount, account_id)
       @bills << Bill.new(due_date, amount, account_id)
+      p @bills
       @bills[0].persist!
       @bills
     end
@@ -58,6 +58,7 @@ module Money
     rescue SQLite3::Exception => e
       puts "Exception occured"
       puts e
+      puts "Tell the user something here..."
     end
 
     private

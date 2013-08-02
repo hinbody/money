@@ -57,6 +57,7 @@ module Money
     rescue SQLite3::Exception => e
       puts "Exception occured"
       puts e
+      puts "Tell the user something here..."
     end
 
     private
