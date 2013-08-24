@@ -13,14 +13,12 @@ module Money
     end
 
     def self.total_of_all_bills
-      rows = db.execute("SELECT * FROM BILLS")# do |row|
-      #binding.pry
+      rows = db.execute("SELECT * FROM BILLS")
       total = 0.0
       rows.each do |row|
         total += row[2].to_f
-        #binding.pry
       end
-      total
+      total.round(2)
     end
 
     def persist!

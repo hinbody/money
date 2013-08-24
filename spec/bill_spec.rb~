@@ -2,17 +2,23 @@ require 'spec_helper'
 
 module Money
   describe Bill do
+    before(:all) do
+      @account = Account.create("CableCo", "2003003949")
+      @account2 = Account.create("ComCast", "2003003949")
+      @account3 = Account.create("Att", "234567")
+    end
     let(:b) {  Bill.new("2013-07-01", 29.52, "1") }
     #let(:account) { Account.create("CableCo", "2003003949") }
     it "can be created" do
       b.should be_a Bill
     end
     it "can get total of all bills" do
-      @account = Account.create("CableCo", "2003003949")
+      #@account = Account.create("CableCo", "2003003949")
       Bill.drop_bill_table 
-      @account.add_bill('2013-07-01', 35, @account.id)
-      @account.add_bill('2013-08-01', 30, @account.id)
-      Bill.total_of_all_bills.should == 65
+      @account.add_bill('2013-07-01', 29.52, @account.id)
+      @account2.add_bill('2013-08-01', 29.50, @account2.id)
+      @account3.add_bill('2013-08-01', 40, @account3.id)
+      Bill.total_of_all_bills.should == 59.02
     end
   end
 end

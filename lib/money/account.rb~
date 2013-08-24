@@ -42,8 +42,7 @@ module Money
     end
 
     def add_bill(due_date, amount, account_id)
-      @bills << Bill.new(due_date, amount, account_id)
-      p @bills
+      @bills << Bill.new(due_date, amount.round(2), account_id)
       @bills[0].persist!
       @bills
     end
